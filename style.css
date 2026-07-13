@@ -1,0 +1,489 @@
+/* ==========================================================================
+   1. CUSTOM TYPEFACE INITIALIZATION
+   ========================================================================== */
+@font-face {
+    font-family: 'HAL Timezone Regular';
+    src: url('fonts/HALTimezone-Regular.woff2') format('woff2'),
+         url('fonts/HALTimezone-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HAL Timezone Italic';
+    src: url('fonts/HALTimezone-Italic.woff2') format('woff2'),
+         url('fonts/HALTimezone-Italic.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'ABC ROM';
+    src: url('fonts/ABCROM-Medium.woff2') format('woff2'),
+         url('fonts/ABCROM-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ABC ROM Bold';
+    src: url('fonts/ABCROM-Bold.woff2') format('woff2'),
+         url('fonts/ABCROM-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* ==========================================================================
+   2. GLOBAL ELEMENT RESETS & SCROLLBAR SUPPRESSION
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;  /* Removes the default underline */
+    color: inherit;          /* Makes the link match the surrounding text color */
+    cursor: pointer;         /* Ensures the mouse cursor still turns into a pointer hand */
+}
+
+body {
+    font-family: 'ABC ROM', sans-serif;
+    font-size: 12.75pt; 
+    line-height: 15.375pt; 
+    overflow: hidden;
+    height: 100vh;
+}
+
+.pane::-webkit-scrollbar {
+    display: none;
+}
+.pane {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Language Toggle Button Layout Base */
+#lang-toggle {
+    position: fixed;
+    top: 36px; 
+    right: 36px;
+    z-index: 100;
+    padding: 10px 18px;
+    border-radius: 0;
+    cursor: pointer;
+    font-family: 'ABC ROM Bold', sans-serif;
+    font-weight: bold;
+    font-size: 12.5pt; 
+    line-height: 16pt; 
+    letter-spacing: 0; 
+    border: 1.33px solid currentColor; 
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ==========================================================================
+   3. STRUCTURAL SCREEN CONTAINER MESH
+   ========================================================================== */
+#invite-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100vw;
+    height: 100vh;
+}
+
+.pane {
+    padding: 36px; 
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;        
+    position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.content {
+    width: 100%;
+    max-width: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scrollable-content {
+    padding-bottom: 36px; 
+}
+
+/* ==========================================================================
+   4. TYPOGRAPHY RULES
+   ========================================================================== */
+.intro-label {
+    font-family: 'ABC ROM Bold', sans-serif;
+    font-weight: bold;
+    font-size: 12.75pt; 
+    line-height: 15.375pt; 
+    letter-spacing: 0; 
+    text-transform: uppercase;
+    position: absolute;
+    top: 36px;  
+    left: 36px; 
+}
+
+.couple-names {
+    width: 100%;
+    text-align: center;
+    font-size: 18pt; 
+    font-weight: normal;
+    text-transform: none;
+    white-space: nowrap; 
+    margin-top: 180px;    
+    margin-bottom: 150px;
+}
+
+.couple-names .name-regular {
+    font-family: 'HAL Timezone Regular', serif;
+}
+
+.couple-names .ampersand-italic {
+    font-family: 'HAL Timezone Italic', serif;
+    font-style: italic;
+}
+
+body[data-lang="en"] .couple-names .ampersand-italic {
+    padding: 0 16px; /* Space buffer around desktop 'and' string */
+}
+body[data-lang="fr"] .couple-names .ampersand-italic {
+    padding: 0 16px; /* Space buffer around desktop 'et' string */
+}
+
+.text-block {
+    width: 100%;
+    text-align: center;
+}
+
+.couple-names + .text-block {
+    margin-top: 24px; 
+}
+
+.section-label {
+    font-family: 'ABC ROM Bold', sans-serif;
+    font-weight: bold;
+    font-size: 12.75pt; 
+    line-height: 15.375pt; 
+    letter-spacing: 0;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.date-header {
+    font-family: 'ABC ROM', sans-serif; 
+    font-weight: normal;
+    font-size: 12.75pt; 
+    line-height: 15.375pt; 
+    letter-spacing: 0; 
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.location-block {
+    font-family: 'ABC ROM', sans-serif; 
+    font-size: 12.75pt; 
+    line-height: 15.375pt; 
+    letter-spacing: 0; 
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.map-container {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    margin-bottom: 0;
+    border: 0px solid transparent;
+    transition: max-height 0.4s ease-out, margin 0.4s ease-out;
+    filter: grayscale(100%) contrast(110%);
+    -webkit-filter: grayscale(100%) contrast(110%);
+}
+
+.map-container.active {
+    max-height: 320px;
+    margin-top: 14px;
+    margin-bottom: 10px;
+    border: 1.33px solid currentColor; 
+}
+
+.map-container iframe {
+    display: block;
+}
+
+.details-list {
+    list-style: none;
+    text-transform: uppercase;
+    width: 100%;
+    margin-top: 24px;    
+    margin-bottom: 24px; 
+}
+
+.details-list li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.details-list li:not(:last-child) {
+    margin-bottom: 24px;
+}
+
+.details-list strong {
+    font-family: 'ABC ROM Bold', sans-serif;
+    font-weight: bold;
+    font-size: 12.75pt; 
+    line-height: 15.375pt; 
+    letter-spacing: 0; 
+    margin-bottom: 4px;
+}
+
+.details-list span {
+    font-family: 'ABC ROM', sans-serif;
+    font-size: 12.75pt; 
+    line-height: 15.375pt; 
+    letter-spacing: 0; 
+}
+
+.section-divider {
+    border: 0;
+    border-top: 1.33px solid currentColor; 
+    width: 100%;
+    margin: 0 0 24px 0; 
+}
+
+.gift-section {
+    width: 100%;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.gift-title {
+    font-family: 'ABC ROM Bold', sans-serif;
+    font-weight: bold;
+    font-size: 12.75pt; 
+    line-height: 15.375pt; 
+    letter-spacing: 0; 
+    margin-bottom: 6px;
+}
+
+.gift-text {
+    font-family: 'ABC ROM', sans-serif;
+    font-size: 12.75pt; 
+    line-height: 15.375pt; 
+    letter-spacing: 0; 
+    margin-bottom: 24px;
+}
+
+.gift-buttons {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    justify-content: center;
+    padding: 0 10px;
+}
+
+.gift-btn {
+    flex: 1;
+    max-width: 280px; 
+    padding: 16px 10px;
+    border: 1.33px solid currentColor; 
+    text-decoration: none;
+    font-family: 'ABC ROM Bold', sans-serif;
+    font-weight: bold;
+    font-size: 12.75pt; 
+    line-height: 15.375pt; 
+    letter-spacing: 0; 
+    text-align: center;
+    border-radius: 0;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ==========================================================================
+   5. DESKTOP INTERACTION STATE INVERSIONS
+   ========================================================================== */
+body[data-lang="en"] #lang-toggle {
+    background-color: #000000;
+    color: #ffffff;
+    border-color: #ffffff;
+    box-shadow: 4px 4px 0px #ffffff;
+}
+
+body[data-lang="en"] .english-side {
+    transform: rotate(0deg);
+    background-color: #ffffff;
+    color: #000000;
+}
+body[data-lang="en"] .english-side .gift-btn {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 6px 6px 0px #000000;
+}
+
+body[data-lang="en"] .french-side {
+    transform: rotate(180deg);
+    background-color: #000000;
+    color: #ffffff;
+}
+body[data-lang="en"] .french-side .gift-btn {
+    background-color: #000000;
+    color: #ffffff;
+    border: 1.33px solid #ffffff;
+    box-shadow: 6px 6px 0px #ffffff;
+}
+
+body[data-lang="fr"] #lang-toggle {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #000000;
+    box-shadow: 4px 4px 0px #000000;
+}
+
+body[data-lang="fr"] .english-side {
+    transform: rotate(180deg);
+    background-color: #000000;
+    color: #ffffff;
+}
+body[data-lang="fr"] .english-side .gift-btn {
+    background-color: #000000;
+    color: #ffffff;
+    border: 1.33px solid #ffffff;
+    box-shadow: 6px 6px 0px #ffffff;
+}
+
+body[data-lang="fr"] .french-side {
+    transform: rotate(0deg);
+    background-color: #ffffff;
+    color: #000000;
+}
+body[data-lang="fr"] .french-side .gift-btn {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 6px 6px 0px #000000;
+}
+
+/* ==========================================================================
+   6. MOBILE RESPONSIVE MEDIA OVERRIDES
+   ========================================================================== */
+@media (max-width: 768px) {
+    #invite-container {
+        display: block; 
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    #lang-toggle {
+        right: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        top: 36px !important;
+    }
+
+    .pane {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        padding: 120px 36px 36px 36px; 
+    }
+
+    .intro-label {
+        position: static !important;
+        width: 100%;
+        text-align: center; 
+        margin-bottom: 0;
+        font-size: 12.75pt !important;
+        line-height: 15.375pt !important;
+    }
+
+    .french-side, .english-side {
+        transform: rotate(0deg) !important; 
+    }
+
+    /* Enforce 3 centered text rows for the name break configuration on mobile */
+    .couple-names {
+        white-space: normal !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+        font-size: 18pt !important;
+        line-height: 22pt !important;
+    }
+    
+    .couple-names .name-regular,
+    .couple-names .ampersand-italic {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 0 !important;
+    }
+
+    /* Stack buttons vertically on mobile viewports */
+    .gift-buttons {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 16px !important;
+    }
+
+    .gift-btn {
+        width: 100% !important;
+        max-width: 280px !important;
+    }
+
+    /* MOBILE STATE A: ENGLISH TOGGLED */
+    body[data-lang="en"] #lang-toggle {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        border-color: #000000 !important;
+        box-shadow: 4px 4px 0px #000000 !important;
+    }
+    body[data-lang="en"] .french-side {
+        display: none !important;
+    }
+    body[data-lang="en"] .english-side {
+        display: flex !important;
+        background-color: #ffffff !important;
+        color: #000000 !important;
+    }
+    body[data-lang="en"] .english-side .gift-btn {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        border: 1.33px solid #000000 !important;
+        box-shadow: 6px 6px 0px #000000 !important;
+    }
+
+    /* MOBILE STATE B: FRENCH TOGGLED */
+    body[data-lang="fr"] #lang-toggle {
+        background-color: #000000 !important;
+        color: #ffffff !important;
+        border-color: #ffffff !important;
+        box-shadow: 4px 4px 0px #ffffff !important;
+    }
+    body[data-lang="fr"] .english-side {
+        display: none !important;
+    }
+    body[data-lang="fr"] .french-side {
+        display: flex !important;
+        background-color: #000000 !important;
+        color: #ffffff !important;
+    }
+    body[data-lang="fr"] .french-side .gift-btn {
+        background-color: #000000 !important;
+        color: #ffffff !important;
+        border: 1.33px solid #ffffff !important;
+        box-shadow: 6px 6px 0px #ffffff !important;
+    }
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cécile Claude David & Luke John Hall: Wedding / Mariage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-lang="en">
+
+    <!-- Language Toggle Button -->
+    <button id="lang-toggle" onclick="toggleLanguage()">FR / EN</button>
+
+    <!-- Main Invitation Container Grid -->
+    <main id="invite-container">
+        
+        <!-- ENGLISH SIDE (Locked to Left Column) -->
+        <section class="pane english-side">
+            <div class="content scrollable-content">
+                <span class="intro-label">WEDDING CELEBRATION OF</span>
+                
+                <h2 class="couple-names">
+                    <span class="name-regular">Cécile Claude David</span>
+                    <span class="ampersand-italic">and</span>
+                    <span class="name-regular">Luke John Hall</span>
+                </h2>
+
+                
+                <div class="text-block">
+                    <p class="section-label">DATE</p>
+                    <p class="date-header">19 SEPTEMBER 2026</p><br>
+                </div>
+                
+                <div class="text-block">
+                    <p class="section-label">LOCATION</p>
+                    <div class="location-block" onclick="toggleMap('map-en')">
+                        DOMAINE DES MARAIS<br>
+                        51 RUE SAINT-HONORÉ<br>
+                        38300 BOURGOIN-JALLIEU, FRANCE
+                    </div>
+                </div>
+
+                <!-- Grayscale Slide-down Map -->
+                <div id="map-en" class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2787.971167448375!2d5.2676839!3d45.5710609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478b05cf1b59fb19%3A0xe54d9c4fb261cf3!2s51%20Rue%20Saint-Honor%C3%A9%2C%2038300%20Bourgoin-Jallieu%2C%20France!5e0!3m2!1sen!2s!4v1710000000000!5m2!1sen!2s" 
+                        width="100%" 
+                        height="300" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+                <!-- Event Details List Section -->
+                <ul class="details-list">
+                    <li><strong>TRANSPORT</strong><span>TAXI PICK-UP FROM HOTELS 2.45–3.15PM<br><br>For guests staying at the Best Western or IBIS Médipole in Bourgoin-Jallieu.<br>Please let us know if you wished to be picked-up</span></li>
+                    <li><strong>EVENT</strong><span>FROM 3PM UNTIL LATE</span></li>
+                    <li><strong>CEREMONY</strong><span>3.45PM<br><br>There will be a short ceremony within the Domaine
+</span></li>
+                    <li><strong>DRINKS</strong><span>4.45PM</span></li>
+                    <li><strong>DINNER</strong><span>7.30PM</span></li>
+                    <li><strong>PARTY</strong><span>9PM</span></li>
+                    <li><strong>TRANSPORT</strong><span>TAXI BACK TO HOTELS FROM 1.30AM<br><br>For guests staying at the Best Western or IBIS Médipole in Bourgoin-Jallieu. <br>Please let us know if you wished to be dropped-off</span></li>
+                    <li><strong>CONTACT</strong><span><a href="mailto:cecileandluke@gmail.com" target="_blank">cecileandluke@gmail.com</a></span></li>
+                </ul>
+
+                <hr class="section-divider">
+
+                <!-- Registry Gift Section -->
+                <div class="gift-section">
+                    <h3 class="gift-title">GIFT</h3>
+                    <p class="gift-text">We do not expect any gifts, your presence during this special day for us is the most precious to us.<br><br>
+If you do still wish to make a longer lasting gesture, we'd be delighted if you’d contribute to one of future projects: <br>our house renovation or our honeymoon!</p>
+                    <div class="gift-buttons">
+                        <a href="https://www.paypal.com/pool/9qSlbkGl3T?sr=wccr" target="_blank" class="gift-btn">HOUSE RENOVATION</a>
+                        <a href="https://www.paypal.com/pool/9qSlu5ljQh?sr=wccr" target="_blank" class="gift-btn">HONEYMOON</a>
+                    </div>
+
+               <br><br> <hr class="section-divider">
+
+                    <div class="gift-section">
+                    <h3 class="gift-title">GUEST PHOTOS</h3>
+                    <p class="gift-text">PLEASE SHARE YOUR PHOTOS FROM THE DAY</p>
+                    <div class="gift-buttons">
+                        <a href="https://drive.google.com/drive/folders/1yAtDjGL7Zd5LpB9gO8_fyhS4n92T0xcf?usp=sharing" target="_blank"class="gift-btn">UPLOAD</a><br><br>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FRENCH SIDE (Locked to Right Side) -->
+        <section class="pane french-side">
+            <div class="content scrollable-content">
+                <span class="intro-label">CÉLÉBRATION DU MARIAGE DE</span>
+                
+                <h2 class="couple-names">
+                    <span class="name-regular">Cécile Claude David</span>
+                    <span class="ampersand-italic">et</span>
+                    <span class="name-regular">Luke John Hall</span>
+                </h2>
+                
+                <div class="text-block">
+                    <p class="section-label">DATE</p>
+                    <p class="date-header">19 SEPTEMBRE 2026</p>
+                </div>
+                <br>
+                <div class="text-block">
+                    <p class="section-label">LOCATION</p>
+                    <div class="location-block" onclick="toggleMap('map-fr')">
+                        DOMAINE DES MARAIS<br>
+                        51 RUE SAINT-HONORÉ<br>
+                        38300 BOURGOIN-JALLIEU, FRANCE
+                    </div>
+                </div>
+
+                <!-- Grayscale Slide-down Map -->
+                <div id="map-fr" class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2787.971167448375!2d5.2676839!3d45.5710609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478b05cf1b59fb19%3A0xe54d9c4fb261cf3!2s51%20Rue%20Saint-Honor%C3%A9%2C%2038300%20Bourgoin-Jallieu%2C%20France!5e0!3m2!1sen!2s!4v1710000000000!5m2!1sen!2s" 
+                        width="100%" 
+                        height="300" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+                <!-- Event Details List Section -->
+                <ul class="details-list">
+                    <li><strong>TRANSPORT</strong><span>TAXI DEPUIS LES HÔTELS 14H45–15H15<br><br>Pour les invités restant au Best Western ou IBIS Médipole de Bourgoin-Jallieu.<br>
+Faites-nous savoir si vous souhaitez être pris en charge</span></li>
+                    <li><strong>ÉVÉNEMENT</strong><span>DE 15H JUSQU’À TARD DANS LA NUIT</span></li>
+                    <li><strong>CÉRÉMONIE</strong><span>15H45<br><br>Une cérémonie aura lieu au Domaine</span></li>
+                    <li><strong>APÉRITIF</strong><span>16H45</span></li>
+                    <li><strong>DÎNER</strong><span>19H30</span></li>
+                    <li><strong>FÊTE</strong><span>21H00</span></li>
+                    <li><strong>TRANSPORT</strong><span>TAXI VERS LES HÔTELS À PARTIR DE 1H30<br><br>Pour les invités restant au Best Western ou IBIS Médipole de Bourgoin-Jallieu.<br>
+Faites-nous savoir si vous souhaitez être pris en charge</span></li>
+                    <li><strong>CONTACT</strong><span><a href="mailto:cecileandluke@gmail.com" target="_blank">cecileandluke@gmail.com</a></span></li>
+                </ul>
+
+                <hr class="section-divider">
+
+                <!-- Registry Gift Section -->
+                <div class="gift-section">
+                    <h3 class="gift-title">CADEAU</h3>
+                    <p class="gift-text">Nous ne souhaitons pas de cadeau, votre présence durant ce jour si spécial pour nous étant le plus précieux à nos yeux.<br><br>
+Si vous souhaitez tout de fois, nous serions très touchés de votre contribution a l'un de nos futur projets: <br>la maison de nos rêves ou la lune de miel de nos rêves</p>
+                    <div class="gift-buttons">
+                        <a href="https://www.paypal.com/pool/9qSlbkGl3T?sr=wccr" target="_blank" class="gift-btn">RÉNOVATION DE MAISON</a>
+                        <a href="https://www.paypal.com/pool/9qSlu5ljQh?sr=wccr" target="_blank" class="gift-btn">LUNE DE MIEL</a>
+                    </div>
+
+<br><br> <hr class="section-divider">
+
+                    <div class="gift-section">
+                    <h3 class="gift-title">PHOTOS DES INVITÉS</h3>
+                    <p class="gift-text">MERCI DE PARTAGER VOS PHOTOS DE LA JOURNÉE</p>
+                    <div class="gift-buttons">
+                        <a href="https://drive.google.com/drive/folders/1yAtDjGL7Zd5LpB9gO8_fyhS4n92T0xcf?usp=sharing" target="_blank"class="gift-btn">TÉLÉVERSER</a><br><br>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const currentLang = body.getAttribute('data-lang');
+            body.setAttribute('data-lang', currentLang === 'en' ? 'fr' : 'en');
+        }
+
+        function toggleMap(id) {
+            const map = document.getElementById(id);
+            map.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
