@@ -506,8 +506,8 @@ body[data-lang="fr"] .french-side .gift-btn {
         gap: 12px !important;
         font-size: 18pt !important;
         line-height: 22pt !important;
-        margin-top: 40px !important; /* Reduced from 180px so the layout reads naturally underneath the intro label */
-        margin-bottom: 80px !important; /* Reduced from 150px for a clean visual flow */
+        margin-top: 80px !important; /* Reduced from 180px so the layout reads naturally underneath the intro label */
+        margin-bottom: 100px !important; /* Reduced from 150px for a clean visual flow */
     }
     
     .couple-names .name-regular,
