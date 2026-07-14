@@ -82,7 +82,7 @@ body {
     transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Hover Shake Animation Trigger */
+/* Hover Shake Animation Trigger (Desktop) */
 #lang-toggle:hover,
 .gift-btn:hover {
     animation: shake-element 0.3s ease-in-out infinite;
@@ -155,7 +155,7 @@ body {
     text-transform: none;
     white-space: nowrap; 
     margin-top: 180px;    
-    margin-bottom: 180px;
+    margin-bottom: 150px;
 }
 
 .couple-names .name-regular {
@@ -429,10 +429,15 @@ body[data-lang="fr"] .french-side .gift-btn {
         top: 36px !important;
     }
 
-    /* Keep toggle button centered but handle shake properly on mobile */
+    /* Disable hover shake animations completely on mobile */
+    #lang-toggle:hover,
+    .gift-btn:hover {
+        animation: none !important;
+    }
+
+    /* Keep toggle button centered on mobile */
     #lang-toggle:hover {
         transform: translateX(-50%) !important;
-        animation: shake-element 0.3s ease-in-out infinite;
     }
 
     .pane {
