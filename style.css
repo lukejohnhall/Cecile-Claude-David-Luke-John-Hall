@@ -479,15 +479,15 @@ body[data-lang="fr"] .french-side .gift-btn {
         top: 0;
         left: 0;
         height: 100%;
-        /* Extra padding-bottom of 150px to ensure scrollable elements 
-           (like the UPLOAD buttons) can fully pass clear of the dynamic iOS chrome */
-        padding: 120px 36px 150px 36px; 
+        /* Adjusted top padding to 140px to safely clear the FR/EN button */
+        padding: 140px 36px 150px 36px; 
     }
 
     .intro-label {
         position: static !important;
         width: 100%;
         text-align: center; 
+        margin-top: 15px !important; /* Forces a safe, clear gap directly below the button area */
         margin-bottom: 0;
         font-size: 12.75pt !important;
         line-height: 15.375pt !important;
@@ -506,6 +506,8 @@ body[data-lang="fr"] .french-side .gift-btn {
         gap: 12px !important;
         font-size: 18pt !important;
         line-height: 22pt !important;
+        margin-top: 40px !important; /* Reduced from 180px so the layout reads naturally underneath the intro label */
+        margin-bottom: 80px !important; /* Reduced from 150px for a clean visual flow */
     }
     
     .couple-names .name-regular,
