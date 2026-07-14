@@ -82,6 +82,22 @@ body {
     transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* Hover Shake Animation Trigger */
+#lang-toggle:hover,
+.gift-btn:hover {
+    animation: shake-element 0.3s ease-in-out infinite;
+}
+
+/* Shake Animation Keyframes */
+@keyframes shake-element {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-2px, 1px); }
+    40% { transform: translate(2px, -1px); }
+    60% { transform: translate(-1px, -1px); }
+    80% { transform: translate(2px, 1px); }
+    100% { transform: translate(0, 0); }
+}
+
 /* ==========================================================================
    3. STRUCTURAL SCREEN CONTAINER MESH
    ========================================================================== */
@@ -117,7 +133,7 @@ body {
 }
 
 /* ==========================================================================
-   4. TYPOGRAPHY RULES
+   4. TYPOGRAPHY & MAP RULES
    ========================================================================== */
 .intro-label {
     font-family: 'ABC ROM Bold', sans-serif;
@@ -139,7 +155,7 @@ body {
     text-transform: none;
     white-space: nowrap; 
     margin-top: 180px;    
-    margin-bottom: 150px;
+    margin-bottom: 180px;
 }
 
 .couple-names .name-regular {
@@ -197,17 +213,36 @@ body[data-lang="fr"] .couple-names .ampersand-italic {
     cursor: pointer;
     width: 100%;
     text-align: center;
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent; /* Webkit Tap Outline Reset */
+}
+
+.location-block:focus,
+.location-block:active {
+    outline: none !important;
 }
 
 .map-container {
+    position: relative; /* Relative holding context for colorize overlay */
     width: 100%;
     max-height: 0;
     overflow: hidden;
     margin-bottom: 0;
     border: 0px solid transparent;
     transition: max-height 0.4s ease-out, margin 0.4s ease-out;
-    filter: grayscale(100%) contrast(110%);
-    -webkit-filter: grayscale(100%) contrast(110%);
+}
+
+/* Colorize overlay to dye the grayscale map #ff3333 */
+.map-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ff3333;
+    mix-blend-mode: color; /* Blends nicely over map structures */
+    pointer-events: none;   /* Maintains full map interaction */
 }
 
 .map-container.active {
@@ -219,6 +254,8 @@ body[data-lang="fr"] .couple-names .ampersand-italic {
 
 .map-container iframe {
     display: block;
+    filter: grayscale(100%) contrast(110%);
+    -webkit-filter: grayscale(100%) contrast(110%);
 }
 
 .details-list {
@@ -259,6 +296,7 @@ body[data-lang="fr"] .couple-names .ampersand-italic {
 .section-divider {
     border: 0;
     border-top: 1.33px solid currentColor; 
+    color: inherit; /* Inherits parent's text color */
     width: 100%;
     margin: 0 0 24px 0; 
 }
@@ -314,63 +352,63 @@ body[data-lang="fr"] .couple-names .ampersand-italic {
    5. DESKTOP INTERACTION STATE INVERSIONS
    ========================================================================== */
 body[data-lang="en"] #lang-toggle {
-    background-color: #000000;
-    color: #ffffff;
-    border-color: #ffffff;
-    box-shadow: 4px 4px 0px #ffffff;
+    background-color: #ffdd99;
+    color: #ff3333;
+    border-color: #ff3333;
+    box-shadow: 4px 4px 0px #ff3333;
 }
 
 body[data-lang="en"] .english-side {
     transform: rotate(0deg);
     background-color: #ffffff;
-    color: #000000;
+    color: #ff3333;
 }
 body[data-lang="en"] .english-side .gift-btn {
     background-color: #ffffff;
-    color: #000000;
-    box-shadow: 6px 6px 0px #000000;
+    color: #ff3333;
+    box-shadow: 6px 6px 0px #ff3333;
 }
 
 body[data-lang="en"] .french-side {
     transform: rotate(180deg);
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #ffdd99;
+    color: #ff3333;
 }
 body[data-lang="en"] .french-side .gift-btn {
-    background-color: #000000;
-    color: #ffffff;
-    border: 1.33px solid #ffffff;
-    box-shadow: 6px 6px 0px #ffffff;
+    background-color: #ffdd99;
+    color: #ff3333;
+    border: 1.33px solid #ff3333;
+    box-shadow: 6px 6px 0px #ff3333;
 }
 
 body[data-lang="fr"] #lang-toggle {
     background-color: #ffffff;
-    color: #000000;
-    border-color: #000000;
-    box-shadow: 4px 4px 0px #000000;
+    color: #ff3333;
+    border-color: #ff3333;
+    box-shadow: 4px 4px 0px #ff3333;
 }
 
 body[data-lang="fr"] .english-side {
     transform: rotate(180deg);
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #ffdd99;
+    color: #ff3333;
 }
 body[data-lang="fr"] .english-side .gift-btn {
-    background-color: #000000;
-    color: #ffffff;
-    border: 1.33px solid #ffffff;
-    box-shadow: 6px 6px 0px #ffffff;
+    background-color: #ffdd99;
+    color: #ff3333;
+    border: 1.33px solid #ff3333;
+    box-shadow: 6px 6px 0px #ff3333;
 }
 
 body[data-lang="fr"] .french-side {
     transform: rotate(0deg);
     background-color: #ffffff;
-    color: #000000;
+    color: #ff3333;
 }
 body[data-lang="fr"] .french-side .gift-btn {
     background-color: #ffffff;
-    color: #000000;
-    box-shadow: 6px 6px 0px #000000;
+    color: #ff3333;
+    box-shadow: 6px 6px 0px #ff3333;
 }
 
 /* ==========================================================================
@@ -389,6 +427,12 @@ body[data-lang="fr"] .french-side .gift-btn {
         left: 50% !important;
         transform: translateX(-50%) !important;
         top: 36px !important;
+    }
+
+    /* Keep toggle button centered but handle shake properly on mobile */
+    #lang-toggle:hover {
+        transform: translateX(-50%) !important;
+        animation: shake-element 0.3s ease-in-out infinite;
     }
 
     .pane {
@@ -446,9 +490,9 @@ body[data-lang="fr"] .french-side .gift-btn {
     /* MOBILE STATE A: ENGLISH TOGGLED */
     body[data-lang="en"] #lang-toggle {
         background-color: #ffffff !important;
-        color: #000000 !important;
-        border-color: #000000 !important;
-        box-shadow: 4px 4px 0px #000000 !important;
+        color: #ff3333 !important;
+        border-color: #ff3333 !important;
+        box-shadow: 4px 4px 0px #ff3333 !important;
     }
     body[data-lang="en"] .french-side {
         display: none !important;
@@ -456,34 +500,34 @@ body[data-lang="fr"] .french-side .gift-btn {
     body[data-lang="en"] .english-side {
         display: flex !important;
         background-color: #ffffff !important;
-        color: #000000 !important;
+        color: #ff3333 !important;
     }
     body[data-lang="en"] .english-side .gift-btn {
         background-color: #ffffff !important;
-        color: #000000 !important;
-        border: 1.33px solid #000000 !important;
-        box-shadow: 6px 6px 0px #000000 !important;
+        color: #ff3333 !important;
+        border: 1.33px solid #ff3333 !important;
+        box-shadow: 6px 6px 0px #ff3333 !important;
     }
 
     /* MOBILE STATE B: FRENCH TOGGLED */
     body[data-lang="fr"] #lang-toggle {
-        background-color: #000000 !important;
-        color: #ffffff !important;
-        border-color: #ffffff !important;
-        box-shadow: 4px 4px 0px #ffffff !important;
+        background-color: #ffdd99 !important;
+        color: #ff3333 !important;
+        border-color: #ff3333 !important;
+        box-shadow: 4px 4px 0px #ff3333 !important;
     }
     body[data-lang="fr"] .english-side {
         display: none !important;
     }
     body[data-lang="fr"] .french-side {
         display: flex !important;
-        background-color: #000000 !important;
-        color: #ffffff !important;
+        background-color: #ffdd99 !important;
+        color: #ff3333 !important;
     }
     body[data-lang="fr"] .french-side .gift-btn {
-        background-color: #000000 !important;
-        color: #ffffff !important;
-        border: 1.33px solid #ffffff !important;
-        box-shadow: 6px 6px 0px #ffffff !important;
+        background-color: #ffdd99 !important;
+        color: #ff3333 !important;
+        border: 1.33px solid #ff3333 !important;
+        box-shadow: 6px 6px 0px #ff3333 !important;
     }
 }
