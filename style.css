@@ -48,12 +48,17 @@ a {
     cursor: pointer;         /* Ensures the mouse cursor still turns into a pointer hand */
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
     font-family: 'ABC ROM', sans-serif;
     font-size: 12.75pt; 
     line-height: 15.375pt; 
     overflow: hidden;
     height: 100vh;
+    height: 100dvh; /* Forces dynamic viewport height on mobile to prevent outer scrolling */
 }
 
 .pane::-webkit-scrollbar {
@@ -69,7 +74,7 @@ body {
     position: fixed;
     top: 36px; 
     right: 36px;
-    z-index: 100;
+    z-index: 9999; /* Boosted z-index to guarantee it always stays on top on mobile */
     padding: 10px 18px;
     border-radius: 0;
     cursor: pointer;
@@ -106,6 +111,7 @@ body {
     grid-template-columns: 1fr 1fr;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
 }
 
 .pane {
@@ -155,7 +161,7 @@ body {
     text-transform: none;
     white-space: nowrap; 
     margin-top: 180px;    
-    margin-bottom: 180px;
+    margin-bottom: 150px;
 }
 
 .couple-names .name-regular {
@@ -440,6 +446,7 @@ body[data-lang="fr"] .french-side .gift-btn {
         position: relative;
         width: 100vw;
         height: 100vh;
+        height: 100dvh;
     }
 
     #lang-toggle {
@@ -465,7 +472,8 @@ body[data-lang="fr"] .french-side .gift-btn {
         top: 0;
         left: 0;
         height: 100%;
-        padding: 120px 36px 36px 36px; 
+        /* Increased bottom padding to 120px to ensure the last UPLOAD buttons are fully visible and clear the viewport's dynamic browser chrome */
+        padding: 120px 36px 120px 36px; 
     }
 
     .intro-label {
