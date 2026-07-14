@@ -133,7 +133,7 @@ body {
 }
 
 /* ==========================================================================
-   4. TYPOGRAPHY & MAP RULES
+   4. TYPOGRAPHY, MAP, & DATA-DETECTOR RULES
    ========================================================================== */
 .intro-label {
     font-family: 'ABC ROM Bold', sans-serif;
@@ -220,6 +220,20 @@ body[data-lang="fr"] .couple-names .ampersand-italic {
 .location-block:focus,
 .location-block:active {
     outline: none !important;
+}
+
+/* Force-suppress iOS/Safari automatically injected link styles inside the address */
+.location-block a,
+a[href^="x-apple-data-detectors"],
+[x-apple-data-detectors] {
+    color: inherit !important;
+    text-decoration: none !important;
+    border-bottom: none !important;
+    background: none !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
 }
 
 .map-container {
