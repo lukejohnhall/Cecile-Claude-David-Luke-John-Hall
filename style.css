@@ -58,6 +58,7 @@ body {
     line-height: 15.375pt; 
     overflow: hidden;
     height: 100vh;
+    height: -webkit-fill-available; /* Crucial WebKit fix for mobile viewport issues */
     height: 100dvh; /* Forces dynamic viewport height on mobile to prevent outer scrolling */
 }
 
@@ -74,7 +75,7 @@ body {
     position: fixed;
     top: 36px; 
     right: 36px;
-    z-index: 9999; /* Boosted z-index to guarantee it always stays on top on mobile */
+    z-index: 99999; /* Boosted z-index to guarantee it always stays on top on mobile */
     padding: 10px 18px;
     border-radius: 0;
     cursor: pointer;
@@ -111,6 +112,7 @@ body {
     grid-template-columns: 1fr 1fr;
     width: 100vw;
     height: 100vh;
+    height: -webkit-fill-available; /* Crucial WebKit viewport height fix */
     height: 100dvh;
 }
 
@@ -446,10 +448,15 @@ body[data-lang="fr"] .french-side .gift-btn {
         position: relative;
         width: 100vw;
         height: 100vh;
+        height: -webkit-fill-available; /* Corrects dynamic Safari UI height */
         height: 100dvh;
     }
 
     #lang-toggle {
+        /* On mobile, use position: absolute; inside the relative container.
+           This links the button directly to the locked outer viewport boundaries 
+           rather than letting dynamic WebKit address bars swallow it. */
+        position: absolute !important;
         right: auto !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
@@ -472,8 +479,9 @@ body[data-lang="fr"] .french-side .gift-btn {
         top: 0;
         left: 0;
         height: 100%;
-        /* Increased bottom padding to 120px to ensure the last UPLOAD buttons are fully visible and clear the viewport's dynamic browser chrome */
-        padding: 120px 36px 120px 36px; 
+        /* Extra padding-bottom of 150px to ensure scrollable elements 
+           (like the UPLOAD buttons) can fully pass clear of the dynamic iOS chrome */
+        padding: 120px 36px 150px 36px; 
     }
 
     .intro-label {
